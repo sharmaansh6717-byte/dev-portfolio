@@ -8,10 +8,10 @@ import { useReducedMotion } from '../../hooks/useReducedMotion'
 // no listeners attached, so there's zero perf cost.
 
 const BLOBS = [
-  { color: 'bg-blob-rose', size: 420, top: '-8%', left: '2%', depth: 30 },
-  { color: 'bg-blob-amber', size: 360, top: '18%', left: '68%', depth: 45 },
-  { color: 'bg-blob-violet', size: 340, top: '55%', left: '20%', depth: 60 },
-  { color: 'bg-blob-coral', size: 300, top: '62%', left: '72%', depth: 38 },
+  { color: 'bg-blob-rose', size: 420, top: '-8%', left: '2%', depth: 70 },
+  { color: 'bg-blob-amber', size: 360, top: '18%', left: '68%', depth: 100 },
+  { color: 'bg-blob-violet', size: 340, top: '55%', left: '20%', depth: 130 },
+  { color: 'bg-blob-coral', size: 300, top: '62%', left: '72%', depth: 85 },
 ]
 
 function Blob({ blob, mouseX, mouseY, interactive }) {
