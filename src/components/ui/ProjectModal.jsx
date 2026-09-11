@@ -30,7 +30,7 @@ export default function ProjectModal({ project, onClose }) {
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-border bg-surface p-6 sm:p-8"
+            className="max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-border bg-surface p-6 shadow-xl sm:p-8 dark:shadow-none"
           >
             <div className="mb-6 flex items-start justify-between">
               <div>
@@ -89,18 +89,19 @@ export default function ProjectModal({ project, onClose }) {
 
             <div className="flex gap-3">
               {project.github && project.github !== '#' && (
-                
+                <a
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
                   data-cursor="hover"
                   className="flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm text-text-primary hover:border-accent"
                 >
+
                   <Github size={14} /> View code
                 </a>
               )}
               {project.demo && project.demo !== '#' && (
-                
+                <a
                   href={project.demo}
                   target="_blank"
                   rel="noreferrer"

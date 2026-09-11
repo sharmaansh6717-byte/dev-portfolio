@@ -31,7 +31,7 @@ export default function ProjectCard({ project, index, onOpen }) {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       style={{ transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
-      className="group cursor-pointer overflow-hidden rounded-lg border border-border bg-surface transition-colors hover:border-accent"
+      className="group cursor-pointer overflow-hidden rounded-lg border border-border bg-surface shadow-sm transition-all hover:border-accent hover:shadow-md dark:shadow-none"
     >
       <div className="relative aspect-video overflow-hidden bg-border">
         <img
@@ -65,7 +65,7 @@ export default function ProjectCard({ project, index, onOpen }) {
 
         <div className="flex gap-3 text-sm">
           {project.github && project.github !== '#' && (
-            
+            <a
               href={project.github}
               target="_blank"
               rel="noreferrer"
@@ -76,7 +76,7 @@ export default function ProjectCard({ project, index, onOpen }) {
             </a>
           )}
           {project.demo && project.demo !== '#' && (
-            
+            <a
               href={project.demo}
               target="_blank"
               rel="noreferrer"

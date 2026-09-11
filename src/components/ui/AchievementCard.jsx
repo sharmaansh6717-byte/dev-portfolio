@@ -8,7 +8,7 @@ export default function AchievementCard({ achievement, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.4, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="rounded-lg border border-border bg-surface p-5 transition-colors hover:border-accent"
+            className="rounded-lg border border-border bg-surface p-5 shadow-sm transition-all hover:border-accent hover:shadow-md dark:shadow-none"
     >
       <div className="mb-3 flex items-center justify-between">
         <Award size={18} className="text-accent" />

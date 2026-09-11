@@ -33,7 +33,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-lg border border-border bg-surface p-6"
+            className="rounded-lg border border-border bg-surface p-6 shadow-sm dark:shadow-none"
           >
             <h3 className="mb-3 font-display text-base font-semibold text-text-primary">{card.title}</h3>
             <p className="text-sm text-text-muted">{card.body}</p>

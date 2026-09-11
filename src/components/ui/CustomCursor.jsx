@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
-// Small dot cursor that expands over anything with data-cursor="hover".
-// Disabled entirely on mobile — component returns null so it never
-// touches touch devices.
+// Position tracking is instant (no spring) so the dot never feels like
+// it's trailing behind the real cursor. Only the hover-grow size change
+// is springy, since that's a state transition, not continuous tracking.
 
 export default function CustomCursor() {
   const isMobile = useIsMobile()
@@ -13,8 +13,8 @@ export default function CustomCursor() {
 
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
-  const springX = useSpring(x, { stiffness: 500, damping: 40 })
-  const springY = useSpring(y, { stiffness: 500, damping: 40 })
+
+  const sizeSpring = { stiffness: 400, damping: 28, mass: 0.4 }
 
   useEffect(() => {
     if (isMobile) return
@@ -31,8 +31,8 @@ export default function CustomCursor() {
       setIsHovering(!!e.target.closest('[data-cursor="hover"]'))
     }
 
-    window.addEventListener('mousemove', handleMove)
-    window.addEventListener('mouseover', handleOver)
+    window.addEventListener('mousemove', handleMove, { passive: true })
+    window.addEventListener('mouseover', handleOver, { passive: true })
 
     return () => {
       document.body.classList.remove('custom-cursor-active')
@@ -47,18 +47,19 @@ export default function CustomCursor() {
     <motion.div
       className="pointer-events-none fixed left-0 top-0 z-[100] rounded-full border border-accent mix-blend-difference"
       style={{
-        x: springX,
-        y: springY,
+        x,
+        y,
         translateX: '-50%',
         translateY: '-50%',
         opacity: isVisible ? 1 : 0,
+        willChange: 'transform',
       }}
       animate={{
         width: isHovering ? 48 : 10,
         height: isHovering ? 48 : 10,
         backgroundColor: isHovering ? 'rgb(var(--color-accent) / 0.15)' : 'rgb(var(--color-accent))',
       }}
-      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      transition={sizeSpring}
     />
   )
 }

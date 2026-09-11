@@ -14,7 +14,7 @@ export default function FeaturedProject({ project, onOpen }) {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       onClick={() => onOpen(project)}
       data-cursor="hover"
-      className="group grid cursor-pointer gap-8 rounded-lg border border-border bg-surface p-6 transition-colors hover:border-accent sm:p-10 lg:grid-cols-2 lg:gap-12"
+      className="group grid cursor-pointer gap-8 rounded-lg border border-border bg-surface p-6 shadow-sm transition-all hover:border-accent hover:shadow-md dark:shadow-none sm:p-10 lg:grid-cols-2 lg:gap-12"
     >
       <div className="flex flex-col justify-center">
         <span className="mb-4 font-display text-sm text-text-muted">01</span>
